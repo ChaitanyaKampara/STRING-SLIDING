@@ -1,0 +1,36 @@
+
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+
+
+
+
+
+from collections import defaultdict
+
+def group_anagrams(strs):
+    # Initialize a defaultdict to store the groups of anagrams
+    anagrams = defaultdict(list)
+    
+    # Iterate through each string in strs
+    for s in strs:
+        # Initialize a list of size 26 for character counts
+        count = [0] * 26
+        
+        # Count frequency of each character in the string
+        for char in s:
+            count[ord(char) - ord('a')] += 1
+        
+        # Convert count list to tuple to use as hashable key
+        count_tuple = tuple(count)
+        
+        # Append s to the corresponding group in the defaultdict
+        anagrams[count_tuple].append(s)
+    
+    # Convert the values of the defaultdict to list to get the grouped anagrams
+    grouped_anagrams = list(anagrams.values())
+    
+    return grouped_anagrams
