@@ -1,0 +1,40 @@
+# Example usage:
+s1 = "anagram"
+t1 = "nagaram"
+ # Output: True
+
+s2 = "rat"
+t2 = "car"
+ # Output: False
+
+=> CALCULATING THE FREQUENCIES OF 2 STRINGS AND EQUATING THEM
+
+def is_anagram(s, t):
+                                                                                 # Check if lengths are different, if so, they cannot be anagrams
+    if len(s) != len(t):
+        return False
+    
+                                                                                 # Create frequency dictionaries for both strings
+    freq_s = {}
+    freq_t = {}
+    
+                                                                                 # Populate frequency dictionary for string s
+    for char in s:
+        if char in freq_s:
+            freq_s[char] += 1
+        else:
+            freq_s[char] = 1
+    
+                                                                                  # Populate frequency dictionary for string t
+    for char in t:
+        if char in freq_t:
+            freq_t[char] += 1
+        else:
+            freq_t[char] = 1
+    
+                                                                                  # Compare frequency dictionaries
+    return freq_s == freq_t
+
+
+
+
